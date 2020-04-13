@@ -1,0 +1,206 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "unique url"
+      }
+    },
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "title"
+      }
+    },
+    "rank" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "4", "3", "2", "1" ],
+        "default_value" : "4",
+        "label" : "rank"
+      }
+    },
+    "active" : {
+      "type" : "Boolean",
+      "config" : {
+        "default_value" : true,
+        "label" : "active"
+      }
+    },
+    "hero_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : {
+          "width" : null,
+          "height" : null
+        },
+        "thumbnails" : [ ],
+        "label" : "hero image"
+      }
+    },
+    "project_tags" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "tag" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "brand identity", "clothing design", "creative direction", "editorial", "film", "incentive design", "objects", "photography", "spatial design", "strategy", "ui/ux design" ],
+              "default_value" : "brand identity",
+              "label" : "tag"
+            }
+          }
+        },
+        "label" : "project tags"
+      }
+    }
+  },
+  "Project" : {
+    "input" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "input",
+        "placeholder" : "Input"
+      }
+    },
+    "input_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph, strong, hyperlink",
+        "label" : "input text"
+      }
+    },
+    "output" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "output",
+        "placeholder" : "Output"
+      }
+    },
+    "output_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph, hyperlink",
+        "label" : "output text"
+      }
+    },
+    "credits" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "credits",
+        "placeholder" : "Credits"
+      }
+    },
+    "credits_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, hyperlink",
+        "label" : "credits text"
+      }
+    },
+    "body1" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "horizontal_image" : [ ],
+          "vertical_images" : [ ]
+        },
+        "choices" : {
+          "horizontal_image" : {
+            "type" : "Slice",
+            "fieldset" : "horizontal image",
+            "description" : "horizontal image",
+            "icon" : "image",
+            "display" : "list",
+            "non-repeat" : {
+              "horizontal_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 600,
+                    "height" : 400
+                  },
+                  "thumbnails" : [ ],
+                  "label" : "horizontal image"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "vertical_images" : {
+            "type" : "Slice",
+            "fieldset" : "vertical images",
+            "description" : "vertical images",
+            "icon" : "image",
+            "display" : "list",
+            "non-repeat" : {
+              "vertical_image1" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "vertical image"
+                }
+              },
+              "vertical_image2" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "vertical image"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  },
+  "Process" : {
+    "process_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, strong, em, hyperlink, list-item",
+        "label" : "process text",
+        "placeholder" : "This is where you write all about the process of executing the project and what you learned discovered along the way."
+      }
+    },
+    "process_images" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "image" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "image"
+            }
+          },
+          "image_text" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "paragraph, strong, hyperlink",
+              "label" : "image text"
+            }
+          },
+          "image_tag" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "brand identity", "clothing design", "creative direction", "editorial", "film", "incentive design", "objects", "photography", "spatial design", "strategy", "ui/ux design" ],
+              "default_value" : "brand identity",
+              "label" : "image tag"
+            }
+          }
+        },
+        "label" : "process images"
+      }
+    }
+  }
+}
