@@ -8,6 +8,11 @@
   background: #FFF7C7; /* Gecko Browsers */
 }
 
+@font-face {
+  font-family: Whyte-Book;
+  src: url(../fonts/Whyte-Book.woff);
+}
+
 /*
  * Globals
  */
@@ -27,7 +32,7 @@ body {
   background: var(--primary-color);
   color: var(--secondary-color);
   line-height: 1.5;
-  font-family: sans-serif;
+  font-family: Whyte-Book, sans-serif;
   font-size: 16px;
 }
 
@@ -44,12 +49,21 @@ p {
   font-size: 13.5px;
 }
 
+/*
+ * Overrides
+ */
 
+ .visible {
+  opacity: 1!important;
+ }
+
+ .hide {
+  opacity: 0!important;
+ }
 
 /*
  * Layout
  */
-
 
 .master {
     overflow-y: scroll;
@@ -92,13 +106,13 @@ p {
 .navigation {
   border-right: 1px solid var(--secondary-color);
   border-left: 1px solid var(--secondary-color);
-  padding: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0rem 0.75rem 0rem 0.75rem;
   height: 2.5rem;
   align-items: center;
 }
 
 .navigation-item {
-  flex: 0 1 2rem;
+  flex: 0 1 2.5rem;
 }
 
 .navigation:first-child {
@@ -119,6 +133,10 @@ p {
    height: 100%;
  }
 
+ .project-header .flex-container {
+  max-width: 10rem;
+ }
+
  .project-header:first-child {
    height: calc(100%);
    width: calc(100%);
@@ -129,9 +147,23 @@ p {
    align-items: center;
  }
 
+ .project-header .flex-container {
+  transition: 0.7s ease-out;
+ }
+
+ .project-header h2, .project-header p {
+  text-align: center;
+}
+
+.click-enter {
+  opacity: 0;
+  position: absolute;
+  transition: 0.6s ease-in;
+
+}
 
  .hero-image {
-  display: none;
+  opacity: 0;
   position: absolute;
   top: 0;
   height: 100%;
@@ -139,6 +171,7 @@ p {
   background-position: center;
   background-size: cover;
   z-index: -1;
+  transition: 0.6s ease-in;
 }
 
 
