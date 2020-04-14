@@ -66,45 +66,34 @@ export default {
     let cc = 0;
 
     tagList = tagList.map(function (current, index, arr){
-      // console.log(current + index + arr);
-      console.log(cc + 'counter')
-      console.log(index + 'index')
-
+      //counter
       tagCounter = tagCounter + current.toString()
+
       if (tagCounter.length > 40 && arr.length === index) {
         return 
       }
-      else if (tagCounter.length > 40 && index === cc + 1) {
-        console.log(current + 'here')
-        current = 'xxx'
-        return ` ...`
+      else if (tagCounter.length > 40 && index === cc ) {
+        return current = ` ...`
       }
+       else if (tagCounter.length > 40) {
+         return current = null
+       }
       else if (tagCounter.length < 40) {
         cc++
         return current 
       }
     })
 
-    // console.log(tagList)
+    tagList = tagList.filter(function (el) {
+      return el != null;
+    });
+
     let tagArray = tagList.toString()
 
    
-
-
-      // m = m.map(function (current, index, arr) { 
-      //   // console.log(current, index, arr );
-      //   if ( index == arr.length - 1) {
-      //     return current
-      //   }
-      //   else {
-      //        return current + `,  `
-      //   }
-      //   });
-    
     this.tags = tagArray
     this.link = LinkResolver(this.project)
     this.img = this.project.data.hero_image.url
-    // this.formattedDate = Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(this.post.data.date))
   },
 }
 </script>
