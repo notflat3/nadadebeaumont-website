@@ -5,14 +5,19 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Prismic + Nuxt Blog example',
+    title: 'Jack Eden',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Prismic + Nuxt Blog example' }
+      { hid: 'description', name: 'description', content: 'Jack Eden is a visual designer based in London' },
+      { property: 'og:type', content: 'website'},
+      { property: 'og:url', content: 'http://mynameis.fr/en' },
+      { property: 'og:title', content: 'Jack Eden'},
+      { property: 'og:description', content: 'Jack Eden is a visual designer based in London'},
+      { property: 'og:image', content: 'http://mynameis.fr/user/pages/about/mynameis-facebook.jpg'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' }
     ]
   },

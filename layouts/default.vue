@@ -13,10 +13,5 @@ export default {
   components: {
     Navigation
   },
-  head () {
-    return {
-      title: 'jack eden',
-    }
-  }
 }
 </script>

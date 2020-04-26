@@ -60,7 +60,7 @@ export default {
     },
   },
   created () {
-    let tagList = this.project.data.project_tags
+     let tagList = this.project.data.project_tags
     tagList = tagList.map(a => ` ` + a.tag);
     let tagCounter = '';
     let cc = 0;
