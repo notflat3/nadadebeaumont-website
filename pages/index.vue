@@ -1,17 +1,21 @@
 <template>
   <section class="master">
       <!-- Check projects exist -->
-      <div v-if="projects.length !== 0" class="projects-container">
+      <div v-if="projects.length !== 0" ref="x" class="all-projects-container">
         <!-- Template for project thumbnail -->
-        <section v-for="project in projects"
+        <section v-for="(project, index) in projects"
                   :key="project.id" 
                   v-bind:project="project" 
-                  @click="showProject(project)"
+                  :ref="'qty' + index"
+                  @click="showProject(project, index)"
                   class="project"
                   :class="{ active: showByIndex === project }"
                   >
           <!-- Here :project="project" passes the data to the component -->
-          <blog-widget :project="project"></blog-widget>
+          <blog-widget :project="project"
+                        :class="{ default: showByIndex === project }" 
+                        :style="{ background: project.data.project_color }"
+                        ></blog-widget>
         </section>
       </div>
       <!-- If no blog posts return message -->
@@ -30,6 +34,7 @@ export default {
   seoTitle: '',
   seoDescription: '',
   favicon: '',
+  backgroundColor: '',
 
   data: function () {
     return {
@@ -67,7 +72,7 @@ export default {
       )
       // Returns data to be used in template
       return {
-        seoTitle: seoContent.meta_title,
+        seoTitle: seoContent.about_title,
         seoDescription: seoContent.meta_description,
         favicon: seoContent.favicon,
         projects: projectList.results
@@ -79,8 +84,14 @@ export default {
     }
   },
   methods: {
-  showProject(i) {
-    return this.showByIndex = i
+  showProject(project, index) {
+    console.log(this.projects)
+    const object = this.$refs['qty' + index]
+    const container = this.$refs.x
+    const posLeft = object[0].offsetLeft - 64;
+    this.showByIndex = project
+    setTimeout( function() {container.scrollTo({ top: 0, left: posLeft, behavior: 'smooth' }) }, 600)
+    
   },
   handleScroll () {
     console.log('handlescroll')

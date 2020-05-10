@@ -1,9 +1,9 @@
 <template>
-  <div class="project-master">
-    <div class="project-background" :style="{ background: background_color }"></div>
+  <div class="project-container"
+        @click ='toggle()'>
+    <div class="project-background"></div>
     <div class="project-content"
-         @mouseover="hover = true"
-         @mouseleave="hover = false"
+
        >
      <div class="project-header">
       <div class="flex-container">
@@ -30,39 +30,16 @@ export default {
       link: '',
       tags: '',
       background_color: '',
-      hover: false,
+      isOpen: false,
     }
   },
   name: 'blog-widget',
   methods: {
-    // Function to get the first paragraph of text in a blog post and limit the displayed text at 300 characters
-    getFirstParagraph (project) {
-
-      const textLimit = 300;
-      const slices = project.data.title;
-      let firstParagraph = '';
-      let haveFirstParagraph = false;
-
-      slices.map(function(slice) {
-        if (!haveFirstParagraph && slice.slice_type == "text") {
-          slice.primary.text.forEach(function(block){
-            if (block.type == "paragraph" && !haveFirstParagraph) {
-              firstParagraph += block.text;
-              haveFirstParagraph = true;
-            }
-          });
-        }
-      });
-      
-      const limitedText = firstParagraph.substr(0, textLimit)
-
-      if (firstParagraph.length > textLimit) {
-        return limitedText.substr(0, limitedText.lastIndexOf(' ')) + '...';
-      }
-      else {
-        return firstParagraph;
-      }
-    },
+    toggle() {
+      this.isOpen = !this.isOpen
+    }
+    
+    
   },
   created () {
     //  let tagList = this.project.data.project_tags
