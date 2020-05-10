@@ -5,15 +5,15 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Jack Eden',
+    title: 'Nada Debeaumont',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Jack Eden is a visual designer based in London' },
+      { hid: 'description', name: 'description', content: 'Nada Debeaumont is a creative researcher and strategist' },
       { property: 'og:type', content: 'website'},
       { property: 'og:url', content: 'http://mynameis.fr/en' },
-      { property: 'og:title', content: 'Jack Eden'},
-      { property: 'og:description', content: 'Jack Eden is a visual designer based in London'},
+      { property: 'og:title', content: 'Nada Debeaumont'},
+      { property: 'og:description', content: 'Nada Debeaumont is a creative researcher and strategist'},
       { property: 'og:image', content: 'http://mynameis.fr/user/pages/about/mynameis-facebook.jpg'}
     ],
     link: [
@@ -53,7 +53,7 @@ export default {
   ],
 
   prismic: {
-    endpoint: 'https://jackeden.cdn.prismic.io/api/v2',
+    endpoint: 'https://nadadebeaumont-website.cdn.prismic.io/api/v2',
     linkResolver: '@/plugins/link-resolver',
     htmlSerializer: '@/plugins/html-serializer',
   },

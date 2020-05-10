@@ -9,8 +9,13 @@
 }
 
 @font-face {
-  font-family: Whyte-Book;
-  src: url(../fonts/Whyte-Book.woff);
+  font-family: FaktPro-Normal;
+  src: url(../fonts/FaktPro-Normal.woff);
+}
+
+@font-face {
+  font-family: FaktPro-Medium;
+  src: url(../fonts/FaktPro-Bold.woff);
 }
 
 /*
@@ -18,8 +23,8 @@
  */
 
  :root {
-  --primary-color: rgba(0,0,0,1);
-  --secondary-color: rgba(255,255,255,1);
+  --primary-color: rgba(255,255,255,1);
+  --secondary-color: rgba(0,0,0,1);
 }
 
 /*
@@ -27,17 +32,24 @@
  */
 
 
+main {
+  height: calc(100vh);
+}
+
 body {
   /* border: 1px solid var(--secondary-color); */
   background: var(--primary-color);
   color: var(--secondary-color);
   line-height: 1.5;
-  font-family: Whyte-Book, sans-serif;
+  font-family: FaktPro-Normal, 'Lato', serif;
+  font-weight: 500;
   font-size: 16px;
 }
 
 h1 {
-
+  font-size: 2.5rem;
+  line-height: 102%;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -47,6 +59,24 @@ h2 {
 
 p {
   font-size: 13.5px;
+}
+a {
+  padding-bottom: 0;
+  display: inline-block;
+  transition: padding 0.25s, border 0.25s, transform 0.25s;
+  margin-bottom: 0px;
+
+}
+
+a::after {
+  content: "↗";
+  display: inline-block;
+  transition: transform 0.25s;
+  margin-bottom: 0px;
+}
+
+a:hover::after {
+  transform: translate(3px, -3px);
 }
 
 /*
@@ -66,7 +96,9 @@ p {
  */
 
 .master {
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 100%;
 }
 
 .flex-container {
@@ -82,98 +114,94 @@ p {
    flex-direction: column;
 }
 
-.projects-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  /* border-left: 1px solid var(--secondary-color); */
-  border-top: 1px solid var(--secondary-color);
+.active {
+  width: calc(66vw )!important;
+  min-width: 400px;
 }
 
-.single-project {
-  flex: 0 1 25vw;
-  height: calc( (100vh - 2.5rem - 1px) / 2);
-  border-bottom: 1px solid var(--secondary-color);
+.projects-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; 
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.projects-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.project {
+  flex: 0 0 auto;
+  background: var(--primary-color);
+  height: 100%;
+  width: calc(100vw / 5 + 36px);
+  min-width: 200px;
+  padding: 1.5rem 1rem;
+  z-index: 1;
+  /* border-bottom: 1px solid var(--secondary-color); */
   border-right: 1px solid var(--secondary-color);
+  transition: 500ms ease-out;
 }
 
 /*
  * Navigation
  */
 
-.navigation {
-  border-right: 1px solid var(--secondary-color);
-  border-left: 1px solid var(--secondary-color);
-  padding: 0rem 0.75rem 0rem 0.75rem;
-  height: 2.5rem;
-  align-items: center;
-}
-
-.navigation-item {
-  flex: 0 1 2.5rem;
-}
-
-.navigation:first-child {
-  flex: 0 1 16rem!important;
-}
-
 
 /*
  * Single Project
  */
 
- .project-content {
+ .project-master {
    height: 100%;
+   position: relative;
+ }
+
+ .project-content {
+   /* height: 100%; */
+   overflow-y: scroll;
+   overflow-x: wrap;
  }
 
  .project-header {
    position: relative;
-   height: 100%;
- }
-
- .project-header .flex-container {
-  max-width: 12.5rem;
- }
-
- .project-header:first-child {
-   height: calc(100%);
-   width: calc(100%);
-   z-index: 1;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
  }
 
  .project-header .flex-container {
   transition: 0.7s ease-out;
  }
 
- .project-header h2, .project-header p {
-  text-align: center;
-}
-
 .click-enter {
   opacity: 0;
   position: absolute;
   transition: 0.6s ease-in;
-
 }
 
- .hero-image {
-  opacity: 0;
+ .project-background {
+  display: block;
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 100%;
+  z-index: 0;
+  margin: -3rem -1rem;
+  height: calc(100% + 6rem);
+  width: calc(100% + 2rem);
   background-position: center;
   background-size: cover;
-  z-index: -1;
-  transition: 0.6s ease-in;
+  transition: 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
+.project-background:hover {
+  cursor: pointer;
+  opacity: 0; 
+}
 
 .outer-container {
   max-width: 700px;
@@ -213,10 +241,6 @@ a {
   color: #353535;
   text-align: left;
 }
-h1, h2,h3,h4,h5,h6 {
-  font-family: 'Lato', sans-serif;
-}
-
 strong {
   font-weight: bold;
 }

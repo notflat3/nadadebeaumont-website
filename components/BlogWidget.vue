@@ -1,18 +1,23 @@
 <template>
-  <nuxt-link :to="link">
-    <div @mouseover="hover = true"
+  <div class="project-master">
+    <div class="project-background" :style="{ background: background_color }"></div>
+    <div class="project-content"
+         @mouseover="hover = true"
          @mouseleave="hover = false"
-         class="project-content">
+       >
      <div class="project-header">
-      <div :class="{ hide: hover }" class="flex-container vertical">
-          <h2>{{ $prismic.asText(project.data.title) }}</h2>
-          <p>[ {{ tags }} ] </p>
+      <div class="flex-container">
+          <!-- <h2>{{ $prismic.asText(project.data.title) }}</h2> -->
+          <h1>
+            <!-- <nuxt-link :to="link"> -->
+            <span>01</span>
+            <!-- </nuxt-link> -->
+            </h1>
+          <!-- <p>[ {{ tags }} ] </p> -->
       </div>
-      <div :class="{ visible: hover }" class="click-enter"><h2>Click to enter</h2></div>
-      <div :class="{ visible: hover }" class="hero-image" :style="{ backgroundImage: 'url(' + img  + ')' }" ></div>
      </div>
     </div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -24,7 +29,7 @@ export default {
     return {
       link: '',
       tags: '',
-      img: '',
+      background_color: '',
       hover: false,
     }
   },
@@ -60,40 +65,41 @@ export default {
     },
   },
   created () {
-     let tagList = this.project.data.project_tags
-    tagList = tagList.map(a => ` ` + a.tag);
-    let tagCounter = '';
-    let cc = 0;
+    //  let tagList = this.project.data.project_tags
+    // tagList = tagList.map(a => ` ` + a.tag);
+    // let tagCounter = '';
+    // let cc = 0;
 
-    tagList = tagList.map(function (current, index, arr){
-      //counter
-      tagCounter = tagCounter + current.toString()
+    // tagList = tagList.map(function (current, index, arr){
+    //   //counter
+    //   tagCounter = tagCounter + current.toString()
 
-      if (tagCounter.length > 40 && arr.length === index) {
-        return 
-      }
-      else if (tagCounter.length > 40 && index === cc ) {
-        return current = ` ...`
-      }
-       else if (tagCounter.length > 40) {
-         return current = null
-       }
-      else if (tagCounter.length < 40) {
-        cc++
-        return current 
-      }
-    })
+    //   if (tagCounter.length > 40 && arr.length === index) {
+    //     return 
+    //   }
+    //   else if (tagCounter.length > 40 && index === cc ) {
+    //     return current = ` ...`
+    //   }
+    //    else if (tagCounter.length > 40) {
+    //      return current = null
+    //    }
+    //   else if (tagCounter.length < 40) {
+    //     cc++
+    //     return current 
+    //   }
+    // })
 
-    tagList = tagList.filter(function (el) {
-      return el != null;
-    });
+    // tagList = tagList.filter(function (el) {
+    //   return el != null;
+    // });
 
-    let tagArray = tagList.toString()
+    // let tagArray = tagList.toString()
 
    
-    this.tags = tagArray
+    // this.tags = tagArray
     this.link = LinkResolver(this.project)
-    this.img = this.project.data.hero_image.url
+    console.log(this.project.data.project_color)
+    this.background_color = this.project.data.project_color
   },
 }
 </script>

@@ -7,11 +7,11 @@ export default function (doc) {
     return '/not-found'
   }
 
-  if (doc.type === 'about_page') {
+  if (doc.type === 'about') {
     return '/'
   }
 
-  if (doc.type === 'project_page') {
+  if (doc.type === 'project') {
     return '/project/' + doc.uid
   }
 
