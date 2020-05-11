@@ -9,7 +9,6 @@
                   id="about"
                   :class="{ active: showByIndex === aboutIndex }"
                   >
-          <!-- Here :project="project" passes the data to the component -->
             <about-widget :about="about"></about-widget>
         </section>
         <!-- Template for project thumbnail -->
@@ -101,31 +100,21 @@ export default {
   showProject(project, index) {
     const object = this.$refs['qty' + index]
     const container = this.$refs.allProjects
-
     this.showByIndex = project
 
     setTimeout( function() {
       let posLeft, posTop;
-      console.log(object[0])
-      if (object[0] = null) {
-        posLeft = 0
-        posTop = 0
-        // console.log('here')
+      if (object[0] === undefined) {
+        posLeft = 0;
+        posTop = 2;
       }
       else {
-         posLeft = (object[0].offsetLeft - 64);
-         posTop = (object[0].offsetTop + 2);
+        posLeft = (object[0].offsetLeft - 64);
+        posTop = (object[0].offsetTop + 2);
       } 
       container.scrollTo({ top: posTop, left: posLeft, behavior: 'smooth' }) 
-      }, 600)
+    }, 600)
   },
-  // showAbout(index) {
-  //   const object = this.$refs['qty' + index];
-  //   const container = this.$refs.allProjects;
-  //   this.showByIndex = index;
-  //   let posLeft = (object.offsetLeft - 64);
-  //   setTimeout( function() {container.scrollTo({ top: 0, left: posLeft, behavior: 'smooth' }) }, 600)
-  // },
   handleScroll () {
     console.log('handlescroll')
     }

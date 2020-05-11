@@ -1,20 +1,27 @@
 <template>
-  <div class="project-container"
-        @click ='toggle()'>
-    <div class="project-background"></div>
-    <div class="project-content"
-       >
-     <div class="project-header">
-      <div class="flex-container">
-          <!-- <h2>{{ $prismic.asText(project.data.title) }}</h2> -->
-          <h1>
-            <!-- <nuxt-link :to="link"> -->
-            <span>01</span>
-            <!-- </nuxt-link> -->
-            </h1>
-          <!-- <p>[ {{ tags }} ] </p> -->
+ <div class="project-container">
+    <div class="project-content">
+      <div class="project-header">
+        <div class="flex-container vertical">
+          <h1><span>01</span><span>. {{ $prismic.asText(project.data.project_title) }}</span></h1>
+          <p>{{ project.data.project_type }} |  {{ project.data.project_publish_date }}</p>
+        </div>
+         <div v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''" 
+          class="flex-container vertical captions">
+          <p>Collaborators: <prismic-rich-text :field="project.data.project_collaborators" /></p>
+          <p>Features: <prismic-rich-text :field="project.data.project_features" /></p>
+
+        </div>
       </div>
-     </div>
+      <div class="project-main">
+        <div class="flex-container">
+        </div>
+      </div>
+      <div class="project-end">
+        <div class="flex-container">
+          <p>End</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,51 +37,20 @@ export default {
       tags: '',
       background_color: '',
       isOpen: false,
+      collaborators: null,
+      features: null,
     }
   },
   name: 'project-widget',
   methods: {
     toggle() {
       this.isOpen = !this.isOpen
-    }
-    
-    
+    },
+    getContent() {
+    },
   },
   created () {
-    //  let tagList = this.project.data.project_tags
-    // tagList = tagList.map(a => ` ` + a.tag);
-    // let tagCounter = '';
-    // let cc = 0;
-
-    // tagList = tagList.map(function (current, index, arr){
-    //   //counter
-    //   tagCounter = tagCounter + current.toString()
-
-    //   if (tagCounter.length > 40 && arr.length === index) {
-    //     return 
-    //   }
-    //   else if (tagCounter.length > 40 && index === cc ) {
-    //     return current = ` ...`
-    //   }
-    //    else if (tagCounter.length > 40) {
-    //      return current = null
-    //    }
-    //   else if (tagCounter.length < 40) {
-    //     cc++
-    //     return current 
-    //   }
-    // })
-
-    // tagList = tagList.filter(function (el) {
-    //   return el != null;
-    // });
-
-    // let tagArray = tagList.toString()
-
-   
-    // this.tags = tagArray
     this.link = LinkResolver(this.project)
-    console.log(this.project.data.project_color)
     this.background_color = this.project.data.project_color
   },
 }
