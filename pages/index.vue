@@ -1,7 +1,17 @@
 <template>
   <section class="master">
       <!-- Check projects exist -->
-      <div v-if="projects.length !== 0" ref="x" class="all-projects-container">
+      <div v-if="projects.length !== 0" ref="allProjects" class="all-projects-container">
+        
+         <section :ref="'qty' + aboutIndex"
+                  @click="showProject(aboutIndex, aboutIndex)"
+                  class="project"
+                  id="about"
+                  :class="{ active: showByIndex === aboutIndex }"
+                  >
+          <!-- Here :project="project" passes the data to the component -->
+            <about-widget :about="about"></about-widget>
+        </section>
         <!-- Template for project thumbnail -->
         <section v-for="(project, index) in projects"
                   :key="project.id" 
@@ -12,10 +22,10 @@
                   :class="{ active: showByIndex === project }"
                   >
           <!-- Here :project="project" passes the data to the component -->
-          <blog-widget :project="project"
-                        :class="{ default: showByIndex === project }" 
-                        :style="{ background: project.data.project_color }"
-                        ></blog-widget>
+          <project-widget :project="project"
+                          :class="{ default: showByIndex === project }" 
+                          :style="{ background: project.data.project_color }"
+                          ></project-widget>
         </section>
       </div>
       <!-- If no blog posts return message -->
@@ -27,7 +37,8 @@
 
 <script>
 // Importing blog posts widget
-import BlogWidget from '~/components/BlogWidget.vue'
+import projectWidget from '~/components/projectWidget.vue'
+import aboutWidget from '~/components/aboutWidget.vue'
 
 export default {
   name: 'Home',
@@ -40,11 +51,13 @@ export default {
     return {
     first: true,
     clicked: false,
-    showByIndex: null
+    aboutIndex: 'value',
+    showByIndex: null,
     }
   },
   components: {
-    BlogWidget
+    projectWidget,
+    aboutWidget
   },
   head () {
     // console.log(seo + 'here')
@@ -63,7 +76,7 @@ export default {
   async asyncData({ $prismic, error }) {
     try{
       // Query to get blog home content
-      const seoContent = (await $prismic.api.getSingle('about')).data
+      const about = (await $prismic.api.getSingle('about')).data
 
       // Query to get projects to preview
       const projectList = await $prismic.api.query(
@@ -72,9 +85,10 @@ export default {
       )
       // Returns data to be used in template
       return {
-        seoTitle: seoContent.about_title,
-        seoDescription: seoContent.meta_description,
-        favicon: seoContent.favicon,
+        about: about,
+        seoTitle: about.about_title,
+        seoDescription: about.meta_description,
+        favicon: about.favicon,
         projects: projectList.results
         // image: homepageContent.image.url,
       }
@@ -85,14 +99,33 @@ export default {
   },
   methods: {
   showProject(project, index) {
-    console.log(this.projects)
     const object = this.$refs['qty' + index]
-    const container = this.$refs.x
-    const posLeft = object[0].offsetLeft - 64;
+    const container = this.$refs.allProjects
+
     this.showByIndex = project
-    setTimeout( function() {container.scrollTo({ top: 0, left: posLeft, behavior: 'smooth' }) }, 600)
-    
+
+    setTimeout( function() {
+      let posLeft, posTop;
+      console.log(object[0])
+      if (object[0] = null) {
+        posLeft = 0
+        posTop = 0
+        // console.log('here')
+      }
+      else {
+         posLeft = (object[0].offsetLeft - 64);
+         posTop = (object[0].offsetTop + 2);
+      } 
+      container.scrollTo({ top: posTop, left: posLeft, behavior: 'smooth' }) 
+      }, 600)
   },
+  // showAbout(index) {
+  //   const object = this.$refs['qty' + index];
+  //   const container = this.$refs.allProjects;
+  //   this.showByIndex = index;
+  //   let posLeft = (object.offsetLeft - 64);
+  //   setTimeout( function() {container.scrollTo({ top: 0, left: posLeft, behavior: 'smooth' }) }, 600)
+  // },
   handleScroll () {
     console.log('handlescroll')
     }

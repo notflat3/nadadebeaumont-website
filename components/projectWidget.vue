@@ -3,7 +3,6 @@
         @click ='toggle()'>
     <div class="project-background"></div>
     <div class="project-content"
-
        >
      <div class="project-header">
       <div class="flex-container">
@@ -33,7 +32,7 @@ export default {
       isOpen: false,
     }
   },
-  name: 'blog-widget',
+  name: 'project-widget',
   methods: {
     toggle() {
       this.isOpen = !this.isOpen

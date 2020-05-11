@@ -14,7 +14,7 @@
         <!-- Template for blog posts -->
         <section v-for="project in projects" :key="project.id" v-bind:project="project" class="blog-post">
           <!-- Here :post="post" passes the data to the component -->
-          <blog-widget :project="project"></blog-widget>
+          <project-widget :project="project"></project-widget>
         </section>
       </div>
       <!-- If no blog posts return message -->
@@ -27,12 +27,12 @@
 
 <script>
 // Importing blog posts widget
-import BlogWidget from '~/components/BlogWidget.vue'
+import projectWidget from '~/components/projectWidget.vue'
 
 export default {
   name: 'Home',
   components: {
-    BlogWidget
+    projectWidget
   },
   head () {
     return {
