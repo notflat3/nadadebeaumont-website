@@ -15,6 +15,7 @@
       </div>
       <div class="project-main">
         <div class="flex-container">
+          <slices-block :slices="slices"/>
         </div>
       </div>
       <div class="project-end">
@@ -28,20 +29,42 @@
 
 <script>
 import LinkResolver from "~/plugins/link-resolver.js"
+import SlicesBlock from '~/components/SlicesBlock.vue'
 
 export default {
   props: ['project'],
+  components: {
+    SlicesBlock
+  },
+  name: 'project-widget',
   data: function() {
     return {
       link: '',
       tags: '',
+      slices: '',
       background_color: '',
       isOpen: false,
       collaborators: null,
       features: null,
     }
   },
-  name: 'project-widget',
+  // async asyncData({ $prismic, params, error }) {
+  //   try{
+  //     // Query to get post content
+  //     const content = (await $prismic.api.getByUID('project', this.project.uid))
+
+  //     // Returns data to be used in template
+  //     return {
+  //       content: content.data,
+  //       contentId: content.id,
+  //       slices: content.data.body,
+  //       // formattedDate: Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(post.date)),
+  //     }
+  //   } catch (e) {
+  //     // Returns error page
+  //     error({ statusCode: 404, message: 'Page not found' })
+  //   }
+  // },
   methods: {
     toggle() {
       this.isOpen = !this.isOpen
@@ -50,6 +73,8 @@ export default {
     },
   },
   created () {
+    // console.log(this.project)
+    this.slices = this.project.data.body,
     this.link = LinkResolver(this.project)
     this.background_color = this.project.data.project_color
   },

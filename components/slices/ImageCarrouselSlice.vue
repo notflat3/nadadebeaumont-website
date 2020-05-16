@@ -7,6 +7,6 @@
 <script>
 export default {
   props: ['slice'],
-  name: 'text-slice'
+  name: 'image-carrousel-slice'
 }
 </script>

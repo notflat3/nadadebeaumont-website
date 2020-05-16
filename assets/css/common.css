@@ -36,6 +36,11 @@ main {
   height: calc(100vh);
 }
 
+section {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   /* border: 1px solid var(--secondary-color); */
   background: var(--primary-color);
@@ -59,6 +64,11 @@ h2 {
 
 p {
   font-size: 1rem;
+}
+p.caption {
+  font-size: 0.8rem;
+  line-height: 1;
+
 }
 
 .project-header p {
@@ -103,9 +113,19 @@ a:hover::after {
   opacity: 1!important;
  }
 
- .hide {
+ .invisible {
   opacity: 0!important;
  }
+
+ .show {
+   display: block;
+ }
+
+ .hide {
+   display: none;
+ }
+
+
 
 /*
  * Layout
@@ -238,8 +258,51 @@ a:hover::after {
 
 
 
+/* SLICES */
+/* CONTENT BLOCK */
 
+/* IMAGE CARROUSEL */
 
+/* IMAGE FULLSCREEN  */
+
+.image-fullscreen {
+  height: 100%;
+  width: 100%;
+}
+
+/* IMAGE ROW */
+
+.image-row {
+  min-height: 164px;
+  max-height: 80vh;
+}
+.image-row-item {
+  padding: 0 0.5rem;
+  flex: 0 1 calc(100% / 2)
+}
+.image-row-item:last-child {
+  padding-right: 0rem;
+}
+.image-row-item:first-child {
+  padding-left: 0;
+}
+.image-row-item img {
+  object-fit: cover;
+  height: 100%;
+}
+
+/* SPACER SLICE */
+
+.spacer-small {
+  height: 2rem
+}
+
+.spacer-medium {
+  height: 4rem
+}
+.spacer-large {
+  height: 6rem
+}
 
 /* NOT MINE */
 .outer-container {

@@ -28,9 +28,9 @@
         </section>
       </div>
       <!-- If no blog posts return message -->
-      <!-- <div v-else class="blog-main"> -->
-      <!-- <p>No Posts published at this time.</p> -->
-      <!-- </div> -->
+      <div v-else class="blog-main">
+      <p>No Posts published at this time.</p>
+      </div>
     </section>
 </template>
 
@@ -116,13 +116,11 @@ export default {
     }, 600)
   },
   handleScroll () {
-    console.log('handlescroll')
     }
   },
   created () {
-      console.log(this.projects + 'projects')
+
       if (process.client) { 
-        console.log('here')
           window.addEventListener('scroll', this.handleScroll);
       }
   },
