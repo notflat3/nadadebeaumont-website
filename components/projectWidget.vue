@@ -1,24 +1,27 @@
 <template>
  <div class="project-container">
-    <div class="project-content">
+    <div class="project-content" ref="projectContent" :class="{ overflow: showByIndex === project}">
       <div class="project-header">
         <div class="flex-container vertical">
-          <h1><span>01</span><span>. {{ $prismic.asText(project.data.project_title) }}</span></h1>
-          <p>{{ project.data.project_type }} |  {{ project.data.project_publish_date }}</p>
+          <h1>0{{ index + 1 }}. 
+            <span class="project-title" :class="{ show: showByIndex === project }">{{ $prismic.asText(project.data.project_title) }}</span>
+          </h1>
+          <div class="project-tags" :class="{ show: showByIndex === project }">
+            <p>{{ project.data.project_type }} |  {{ project.data.project_publish_date }}</p>
         </div>
-         <div v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''" 
-          class="flex-container vertical captions">
-          <p>Collaborators: <prismic-rich-text :field="project.data.project_collaborators" /></p>
-          <p>Features: <prismic-rich-text :field="project.data.project_features" /></p>
-
+        </div>
+         <div class="project-extra-info flex-container vertical captions" :class="{ show: showByIndex === project }"
+              v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''">
+           <prismic-rich-text :field="project.data.project_collaborators" />
+           <prismic-rich-text :field="project.data.project_features" />
         </div>
       </div>
-      <div class="project-main">
+      <div class="project-main" :class="{ show: showByIndex === project }">
         <div class="flex-container">
           <slices-block :slices="slices"/>
         </div>
       </div>
-      <div class="project-end">
+      <div class="project-end" :class="{ show: showByIndex === project }">
         <div class="flex-container">
           <p>End</p>
         </div>
@@ -32,7 +35,7 @@ import LinkResolver from "~/plugins/link-resolver.js"
 import SlicesBlock from '~/components/SlicesBlock.vue'
 
 export default {
-  props: ['project'],
+  props: ['project', 'index', 'showByIndex'],
   components: {
     SlicesBlock
   },
@@ -45,38 +48,30 @@ export default {
       background_color: '',
       isOpen: false,
       collaborators: null,
-      features: null,
+      features: null
     }
   },
-  // async asyncData({ $prismic, params, error }) {
-  //   try{
-  //     // Query to get post content
-  //     const content = (await $prismic.api.getByUID('project', this.project.uid))
-
-  //     // Returns data to be used in template
-  //     return {
-  //       content: content.data,
-  //       contentId: content.id,
-  //       slices: content.data.body,
-  //       // formattedDate: Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(post.date)),
-  //     }
-  //   } catch (e) {
-  //     // Returns error page
-  //     error({ statusCode: 404, message: 'Page not found' })
-  //   }
-  // },
   methods: {
     toggle() {
       this.isOpen = !this.isOpen
     },
-    getContent() {
+    scrollUp() {
+    const container = this.$refs.projectContent
+    container.scrollTo({ top: 0, behavior: 'smooth' }) 
     },
   },
   created () {
-    // console.log(this.project)
+    if (process.client && this.showByIndex != this.project) {
+    window.addEventListener('click', this.scrollUp)
+    }
     this.slices = this.project.data.body,
     this.link = LinkResolver(this.project)
     this.background_color = this.project.data.project_color
+  },
+  destroyed () {
+    if (process.client && this.showByIndex != this.project ) {
+    window.addEventListener('click', this.scrollUp)
+   }
   },
 }
 </script>

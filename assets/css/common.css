@@ -42,10 +42,9 @@ section {
 }
 
 body {
-  /* border: 1px solid var(--secondary-color); */
   background: var(--primary-color);
   color: var(--secondary-color);
-  line-height: 1.5;
+  line-height: 1.4;
   font-family: FaktPro-Normal, 'Lato', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -54,6 +53,7 @@ body {
 h1 {
   font-size: 2.5rem;
   line-height: 102%;
+  display: inherit;
   text-transform: uppercase;
 }
 
@@ -67,7 +67,7 @@ p {
   font-size: 1.05rem;
   line-height: 1.4rem;
 }
-p.caption, .caption p {
+p.caption, .caption p, #dev-credit p {
   font-size: 0.75rem;
   line-height: 1;
 
@@ -75,7 +75,6 @@ p.caption, .caption p {
 
 .project-header p {
   font-size: 0.75rem;
-  display: inline-block;
   line-height: 1.2rem;
 }
 
@@ -126,13 +125,34 @@ video, iframe {
   opacity: 0!important;
  }
 
- .show {
-   display: block;
- }
+ .project-title, 
+ .project-tags,
+ .project-extra-info,
+ .project-main,
+ .project-end {
+  opacity: 0;
+  /* width: 5%; */
+  transition: ease-in-out 0.700s;
+}
 
- .hide {
-   display: none;
- }
+ .show {
+  opacity: 1!important;
+  /* width: auto; */
+  animation-name: show-animation;
+  animation-duration: 0.700s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes show-animation {
+  0%   {opacity: 0;}
+  50%  {opacity: 0.5;}
+  100% {opacity: 1;}
+}
+
+.overflow {
+  overflow-y: scroll!important;
+  transition: 700ms;
+}
 
 
 
@@ -225,10 +245,11 @@ video, iframe {
 .project-content {
    height: 100%;
    padding: 1.5rem 1rem;
-   overflow-y: scroll;
+   overflow-y: hidden;
    overflow-x: hidden;
    display: flex;
    flex-direction: column;
+   transition: 700ms;
  }
 
  .project-header {
@@ -273,6 +294,9 @@ video, iframe {
 /* SLICES */
 
 /* CONTENT BLOCK */
+.content-block {
+  padding-top: 1rem;
+}
 .content-item {
   flex: 0 1 calc(60% - 1rem);
   /* min-width: calc(50% - 2rem); */

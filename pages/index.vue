@@ -9,7 +9,7 @@
                   id="about"
                   :class="{ active: showByIndex === aboutIndex }"
                   >
-            <about-widget :about="about"></about-widget>
+            <about-widget :about="about" :showByIndex="showByIndex"></about-widget>
         </section>
         <!-- Template for project thumbnail -->
         <section v-for="(project, index) in projects"
@@ -22,6 +22,8 @@
                   >
           <!-- Here :project="project" passes the data to the component -->
           <project-widget :project="project"
+                          :index="index"
+                          :showByIndex="showByIndex"
                           :class="{ default: showByIndex === project }" 
                           :style="{ background: project.data.project_color }"
                           ></project-widget>
