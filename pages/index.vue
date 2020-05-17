@@ -115,7 +115,7 @@ export default {
         posTop = (object[0].offsetTop + 2);
       } 
       container.scrollTo({ top: posTop, left: posLeft, behavior: 'smooth' }) 
-    }, 600)
+    }, 900)
   },
   handleScroll () {
     }
