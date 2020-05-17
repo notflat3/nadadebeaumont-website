@@ -119,7 +119,6 @@ export default {
     }
   },
   created () {
-
       if (process.client) { 
           window.addEventListener('scroll', this.handleScroll);
       }

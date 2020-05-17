@@ -2,19 +2,27 @@
     <section>
         <!-- Slice section template -->
         <section v-for="(slice, index) in slices" :key="'slice-' + index">
-            <!-- Fullscreen image template -->
-            <template v-if="slice.slice_type === 'image_fullscreen'">
-                <!-- Here :slice="slice" passes the data to the component -->
+            <!-- Spacer slice template -->
+            <template v-if="slice.slice_type === 'content_block'">
+                <content-block-slice :slice="slice"></content-block-slice>
+            </template>
+              <!-- Fullscreen image template -->
+            <template v-else-if="slice.slice_type === 'image_fullscreen'">
                 <image-fullscreen-slice :slice="slice"></image-fullscreen-slice>
             </template>
             <!-- Quote slice template -->
             <template v-else-if="slice.slice_type === 'image_row'">
                 <image-row-slice :slice="slice"></image-row-slice>
             </template>
-            <!-- Image with caption slice template -->
-            <!-- <template v-else-if="slice.slice_type === 'image_with_caption'">
-                <image-caption-slice :slice="slice"></image-caption-slice>
-            </template> -->
+            <!-- Spacer slice template -->
+            <template v-else-if="slice.slice_type === 'image_carrousel'">
+                <image-carrousel-slice :slice="slice"></image-carrousel-slice>
+            </template>
+
+            <!-- Spacer slice template -->
+            <template v-else-if="slice.slice_type === 'spacer'">
+                <spacer-slice :slice="slice"></spacer-slice>
+            </template>
         </section>
     </section>
 </template>

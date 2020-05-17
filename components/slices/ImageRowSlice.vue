@@ -11,16 +11,6 @@
 <script>
 export default {
   props: ['slice'],
-  name: 'image-row-slice',
-  data: function() {
-    return {
-      images: '',
-    }
-  },
-  created () {
-    console.log(this.slice.primary)
-    this.images = this.slice.primary
-    // this.caption = this.slice.primary.image_caption
-  }
+  name: 'image-row-slice'
 }
 </script>
