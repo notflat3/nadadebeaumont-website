@@ -18,7 +18,14 @@
             <template v-else-if="slice.slice_type === 'image_carrousel'">
                 <image-carrousel-slice :slice="slice"></image-carrousel-slice>
             </template>
-
+            <!-- Article Text template -->
+             <template v-else-if="slice.slice_type === 'article_text'">
+                <article-text-slice :slice="slice"></article-text-slice>
+            </template>
+            <!-- Article Subtitle template -->
+            <template v-else-if="slice.slice_type === 'article_subtitle'">
+                <article-subtitle-slice :slice="slice"></article-subtitle-slice>
+            </template>
             <!-- Spacer slice template -->
             <template v-else-if="slice.slice_type === 'spacer'">
                 <spacer-slice :slice="slice"></spacer-slice>
@@ -29,8 +36,8 @@
 
 <script>
 // Imports for all slices
-const QuoteSlice = () => import("../components/slices/QuoteSlice.vue");
-const TextSlice = () => import("../components/slices/TextSlice.vue");
+const ArticleSubtitleSlice = () => import("../components/slices/ArticleSubtitleSlice.vue");
+const ArticleTextSlice = () => import("../components/slices/ArticleTextSlice.vue");
 const ContentBlockSlice = () => import("../components/slices/ContentBlockSlice.vue");
 const ImageCarrouselSlice = () => import("../components/slices/ImageCarrouselSlice.vue");
 const ImageFullscreenSlice = () => import("../components/slices/ImageFullscreenSlice.vue");
@@ -43,8 +50,8 @@ export default {
   props: ['slices'],
   name: 'slices-block',
   components: {
-    QuoteSlice,
-    TextSlice,
+    ArticleSubtitleSlice,
+    ArticleTextSlice,
     ContentBlockSlice,
     ImageCarrouselSlice,
     ImageFullscreenSlice,

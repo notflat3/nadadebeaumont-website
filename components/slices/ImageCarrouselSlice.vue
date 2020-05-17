@@ -55,7 +55,6 @@ export default {
     imageCover(dimensions) {
       const w = dimensions.width
       const h = dimensions.height
-      console.log(w / h)
       if ( w / h > 1.5) {
         return true
       }

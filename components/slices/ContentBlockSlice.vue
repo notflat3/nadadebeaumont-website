@@ -5,9 +5,9 @@
          :style="{ paddingLeft: txtPadLeft + '%', paddingRight: txtPadRight + '%' }">
       <prismic-rich-text class="" :field="text"/>
     </div>
-    <div class="image-container content-item" 
+    <div v-if="img.url != undefined" class="image-container content-item" 
          :class="{ contentReverse: order === true, contentFull: text.length === 0 }"
-        :style="{ paddingLeft: imgPadLeft + '%', paddingRight: imgPadRight + '%' }">
+         :style="{ paddingLeft: imgPadLeft + '%', paddingRight: imgPadRight + '%' }">
        <div class="content-image">
           <prismic-image :field="img"/>
        </div>
@@ -34,7 +34,6 @@ export default {
     }
   },
   created () {
-    console.log(this.slice.primary.order)
     this.order = this.slice.primary.order
     this.img = this.slice.primary.image
     this.text = this.slice.primary.writing
@@ -46,34 +45,3 @@ export default {
   }
 }
 </script>
-<style>
-.content-item {
-  flex: 0 1 calc(50% - 1rem);
-  /* min-width: calc(50% - 2rem); */
-  margin: 0 1rem;
-}
-.content-item:first-child {
-  margin-left: 0rem
-}
-.content-item:last-child {
-  margin-right: 0rem
-}
-.content-image img {
-  object-fit: contain;
-  max-height: 80vh;
-}
-
-.contentFull {
-  flex: 0 auto;
-}
-.contentReverse:first-child {
-  margin-left: 1rem;
-  margin-right: 0rem;
-}
-
-.contentReverse:last-child {
-  margin-left: 0rem;
-  margin-right: 1rem;
-}
-
-</style>
