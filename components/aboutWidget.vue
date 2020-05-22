@@ -1,6 +1,6 @@
 <template>
   <div class="project-container">
-    <div class="project-content">
+    <div class="project-content" ref="aboutContent" :class="{ overflow: showByIndex === 'value'}">
       <div class="project-header">
         <div class="flex-container">
           <h1>

@@ -8,7 +8,7 @@ export default {
     title: 'Nada Debeaumont',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width' },
       { hid: 'description', name: 'description', content: 'Nada Debeaumont is a creative researcher and strategist' },
       { property: 'og:type', content: 'website'},
       { property: 'og:url', content: 'http://mynameis.fr/en' },
@@ -49,7 +49,7 @@ export default {
     '@/modules/static',
     '@/modules/crawler',
     // https://prismic-nuxt.js.org/
-    '@nuxtjs/prismic'
+    '@nuxtjs/prismic',
   ],
 
   prismic: {
