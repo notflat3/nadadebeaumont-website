@@ -264,13 +264,14 @@ video, iframe {
    overflow-x: hidden;
    display: flex;
    flex-direction: column;
-   transition: 700ms;
+   transition: 800ms ease-in-out;
  }
 
  .project-header {
    display: flex;
    justify-content: space-between;
    margin-bottom: 1.25rem;
+   flex: 0 0 auto;
  }
 
  #about .project-header {
