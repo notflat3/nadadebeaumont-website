@@ -1,12 +1,12 @@
 <template>
-   <div :class="{ reverse: order === true}" class="flex-container content-block">
+   <div :class="{ reverse: order === false}" class="flex-container content-block">
     <div v-if="text != ''" class="text-container content-item" 
-         :class="{ contentReverse: order === true, contentFull: !img }"
+         :class="{ contentReverse: order === false, contentFull: !img }"
          :style="{ paddingLeft: txtPadLeft + '%', paddingRight: txtPadRight + '%' }">
       <prismic-rich-text class="" :field="text"/>
     </div>
     <div v-if="img.url != undefined" class="image-container content-item" 
-         :class="{ contentReverse: order === true, contentFull: text.length === 0 }"
+         :class="{ contentReverse: order === false, contentFull: text.length === 0 }"
          :style="{ paddingLeft: imgPadLeft + '%', paddingRight: imgPadRight + '%' }">
        <div class="content-image">
           <prismic-image :field="img"/>

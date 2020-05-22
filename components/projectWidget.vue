@@ -1,5 +1,5 @@
 <template>
- <div class="project-container">
+ <div class="project-container" v-click-outside="scrollUp">
     <div class="project-content" ref="projectContent" :class="{ overflow: showByIndex === project}">
       <div class="project-header">
         <div class="flex-container">
@@ -9,7 +9,7 @@
            </h1>
          </div> 
           <div class="project-tags" :class="{ show: showByIndex === project }">
-            <p>{{ project.data.project_type }} |  {{ project.data.project_publishing_date }}</p>
+            <p>{{ project.data.project_type }} | <span class="project-publishing-date"> {{ project.data.project_publishing_date }}</span></p>
           </div>
          <div class="project-extra-info flex-container vertical captions" :class="{ show: showByIndex === project }"
               v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''">
@@ -35,6 +35,8 @@
 <script>
 import LinkResolver from "~/plugins/link-resolver.js"
 import SlicesBlock from '~/components/SlicesBlock.vue'
+import ClickOutside from 'vue-click-outside'
+
 
 export default {
   props: ['project', 'index', 'showByIndex'],
@@ -64,7 +66,7 @@ export default {
   },
   created () {
     if (process.client && this.showByIndex != this.project) {
-    window.addEventListener('click', this.scrollUp)
+    // window.addEventListener('click', this.scrollUp)
     }
     this.slices = this.project.data.body,
     this.link = LinkResolver(this.project)
@@ -72,8 +74,17 @@ export default {
   },
   destroyed () {
     if (process.client && this.showByIndex != this.project ) {
-    window.addEventListener('click', this.scrollUp)
+    // window.addEventListener('click', this.scrollUp)
    }
   },
+   mounted () {
+    // prevent click outside event with popupItem.
+    this.popupItem = this.$el
+  },
+ 
+  // do not forget this section
+  directives: {
+    ClickOutside
+  }
 }
 </script>
