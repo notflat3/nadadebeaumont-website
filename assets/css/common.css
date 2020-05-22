@@ -37,7 +37,6 @@ main {
   animation-name: loading-animation;
   animation-duration: 1.400s;
   pointer-events: all;
-  animation-timing-function: ease-in;
   animation-fill-mode: backwards;
 }
 
@@ -79,7 +78,7 @@ p {
 }
 p.caption, .caption p, #dev-credit p {
   font-size: 0.75rem;
-  line-height: 1;
+  line-height: 1.3;
 
 }
 

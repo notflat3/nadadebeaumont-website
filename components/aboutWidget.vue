@@ -15,7 +15,8 @@
       </div>
       <div class="project-end" :class="{ show: showByIndex === 'value' }">
         <div id="dev-credit" class="flex-container">
-          <p>Website by <a href="" target="blank">Jonathan Quaade</a></p>
+          <p>Website by <a href="https://jonathanquaade.com" target="blank">Jonathan Quaade</a>
+          <br>Typeface Fakt by <a href="https://www.typeby.com/fonts/fakt" target="blank">Type By</a> </p>
         </div>
       </div>
     </div>
