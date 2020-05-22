@@ -50,6 +50,7 @@ export default {
     '@/modules/crawler',
     // https://prismic-nuxt.js.org/
     '@nuxtjs/prismic',
+    'nuxt-lazy-load'
   ],
 
   prismic: {

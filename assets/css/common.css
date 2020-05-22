@@ -64,7 +64,7 @@ h2 {
 }
 
 p {
-  font-size: 1.00rem;
+  font-size: 1.05rem;
   line-height: 1.4rem;
 }
 p.caption, .caption p, #dev-credit p {
@@ -220,7 +220,6 @@ img {
   flex: 0 0 auto;
   background: var(--primary-color);
   height: 100%;
-  min-height: 76px;
   width: calc(100vw / 7 + 36px);
   z-index: 1;
   border-right: 1px solid var(--secondary-color);
@@ -479,7 +478,7 @@ spacer {
 
 /* ARTICLE TEXT && ARTICLE SUB-TITLE  */
 .article-container {
-  width: calc((100% / 12) * 9);
+  width: calc((100% / 12) * 8);
 } 
 .article-subtitle {
   margin-bottom: 0.5rem;
@@ -523,19 +522,20 @@ spacer {
   }
   .project {
     height: calc(100% / 8);
-    /* height: calc(100% / 8.5); */
     width: 100%;
+    max-height: 120px;
     border-bottom: 1px solid var(--secondary-color);
     border-right: 0px solid var(--secondary-color);
     animation-name: load-animation;
     animation-duration: 1.600s;
-    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
 }
 
   @keyframes load-animation {
-    0%    {height: 0;}
-    25%   {height: 0;}
-    100%  {height: calc(100% / 8.5);}
+    0%    {height: 0; min-height: 24px;}
+    25%   {height: 0; min-height: 24px;}
+    100%  {height: calc(100% / 8); min-height: 76px;}
  }
   /* .project-content {
     overflow-y: scroll;

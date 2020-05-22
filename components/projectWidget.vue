@@ -25,7 +25,7 @@
       </div>
       <div class="project-end" :class="{ show: showByIndex === project }">
         <div class="flex-container">
-          <p>End</p>
+          <p></p>
         </div>
       </div>
     </div>
