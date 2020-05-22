@@ -84,7 +84,7 @@ export default {
       // Query to get projects to preview
       const projectList = await $prismic.api.query(
         $prismic.predicates.at("document.type", "project"),
-        { orderings : '[my.project.rank desc]'}
+        { orderings : '[my.project.project_publishing_date desc]'}
       )
       // Returns data to be used in template
       return {
