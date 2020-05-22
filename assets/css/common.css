@@ -276,7 +276,7 @@ img {
 
 @keyframes error-animation {
   0%   {min-height: 0; min-width: 0; transform: translate(-600px, 0px)}
-  100% {min-height: 120px; min-width: calc(100vw / 7 + 36px);  transform: translate(0)}
+  100% {min-height: 120px; min-width: calc(100vw / 6 + 76px);  transform: translate(0)}
 }
 
 
@@ -446,13 +446,13 @@ img {
   height: 100%;
   position: absolute;
   left: 0;
-  cursor: w-resize;
+  cursor: url('../svg/arrow-prev.svg'), w-resize;
   pointer-events: auto;
 }
 .arrow-next {
   left: auto;
   right: 0;
-  cursor: e-resize;
+  cursor: url('../svg/arrow-next.svg'), e-resize;
 }
 
 .image-carrousel-item {
