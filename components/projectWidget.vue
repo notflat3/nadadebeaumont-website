@@ -2,19 +2,21 @@
  <div class="project-container">
     <div class="project-content" ref="projectContent" :class="{ overflow: showByIndex === project}">
       <div class="project-header">
-        <div class="flex-container vertical">
-          <h1>0{{ index + 1 }}. 
+        <div class="flex-container">
+          <div class="project-title-container">
+            <h1>0{{ index + 1 }}. 
             <span class="project-title" :class="{ show: showByIndex === project }">{{ $prismic.asText(project.data.project_title) }}</span>
-          </h1>
+           </h1>
+         </div> 
           <div class="project-tags" :class="{ show: showByIndex === project }">
-            <p>{{ project.data.project_type }} |  {{ project.data.project_publish_date }}</p>
-        </div>
-        </div>
+            <p>{{ project.data.project_type }} |  {{ project.data.project_publishing_date }}</p>
+          </div>
          <div class="project-extra-info flex-container vertical captions" :class="{ show: showByIndex === project }"
               v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''">
            <prismic-rich-text :field="project.data.project_collaborators" />
            <prismic-rich-text :field="project.data.project_features" />
         </div>
+      </div>
       </div>
       <div class="project-main" :class="{ show: showByIndex === project }">
         <div class="flex-container">

@@ -74,7 +74,7 @@ p.caption, .caption p, #dev-credit p {
 }
 
 .project-header p {
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   line-height: 1.2rem;
 }
 
@@ -270,7 +270,7 @@ video, iframe {
  .project-header {
    display: flex;
    justify-content: space-between;
-   margin-bottom: 1rem;
+   margin-bottom: 1.25rem;
  }
 
  #about .project-header {
@@ -280,7 +280,18 @@ video, iframe {
 
  .project-header .flex-container {
   transition: 0.7s ease-out;
+  flex-wrap: wrap;
+  width: 100%;
  }
+
+ .project-title-container {
+  flex: 0 0 70%;
+}
+
+.project-tags {
+  text-align: right;
+  flex: 0 0 30%;
+}
 
  .project-main {
    flex-grow: 2;
@@ -548,7 +559,7 @@ img {
   }
 
   .project-header p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     line-height: 1.2rem;  
   }
 
@@ -596,10 +607,12 @@ img {
 
   .project-header .flex-container {
     margin-bottom: 0.25rem;
+    flex-direction: column;
   }
 
   .project-tags {
     margin-top: 0.35rem;
+    text-align: left;
   }
 
   /* PROJECT */

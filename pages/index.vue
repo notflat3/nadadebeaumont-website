@@ -54,6 +54,8 @@ export default {
     clicked: false,
     aboutIndex: 'value',
     showByIndex: null,
+    seoTitle: '',
+    seoDescription: '',
     }
   },
   components: {
@@ -87,7 +89,7 @@ export default {
       // Returns data to be used in template
       return {
         about: about,
-        seoTitle: about.about_title,
+        seoTitle: about.meta_title,
         seoDescription: about.meta_description,
         favicon: about.favicon,
         projects: projectList.results
