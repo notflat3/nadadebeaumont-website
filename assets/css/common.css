@@ -263,6 +263,38 @@ img {
   margin-bottom: 0;
   padding-top: 3rem;
 }
+
+/* Error */ 
+#error {
+  padding: 1rem;
+  animation-name: error-animation;
+  animation-duration: 4s;
+  animation-delay: 1;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards
+}
+
+@keyframes error-animation {
+  0%   {min-height: 0; min-width: 0; transform: translate(-600px, 0px)}
+  100% {min-height: 120px; min-width: calc(100vw / 7 + 36px);  transform: translate(0)}
+}
+
+
+#error a::after {
+  content: "";
+}
+#error a::before {
+  content: "←";
+  padding-right: 2px;
+  display: inline-block;
+  transition: transform 0.25s;
+  margin-bottom: 0px;
+}
+
+#error a:hover::before {
+  transform: translate(-3px, 0);
+  border-bottom: 0px solid var(--secondary-color)!important;
+}
 /* Single Project */
 
 
@@ -540,16 +572,16 @@ spacer {
     border-bottom: 1px solid var(--secondary-color);
     border-right: 0px solid var(--secondary-color);
     animation-name: load-animation;
-    animation-duration: 1.400s;
+    animation-duration: 1.800s;
     pointer-events: all;
     animation-timing-function: ease-in;
     animation-fill-mode: backwards;
 }
 
   @keyframes load-animation {
-    0%    {height: 0; min-height: 24px;}
-    25%   {height: 0; min-height: 24px;}
-    100%  {height: calc(100% / 8); min-height: 76px;}
+    0%    {height: 0; min-height: 24px; transform: translate(0px, -240px)}
+    25%   {height: 0; min-height: 24px;  transform: translate(0px, -240px)}
+    100%  {height: calc(100% / 8); min-height: 76px;  transform: translate(0)}
  }
   /* .project-content {
     overflow-y: scroll;
