@@ -9,7 +9,7 @@
            </h1>
          </div> 
           <div class="project-tags" :class="{ show: showByIndex === project }">
-            <p>{{ project.data.project_type }} | <span class="project-publishing-date"> {{ project.data.project_publishing_date }}</span></p>
+            <p>{{ project.data.project_type }} | <span class="project-publishing-date"> {{ date }}</span></p>
           </div>
          <div class="project-extra-info flex-container vertical captions" :class="{ show: showByIndex === project }"
               v-if="project.data.project_collaborators[0].text !== '' || project.data.project_features[0].text !== ''">
@@ -52,7 +52,8 @@ export default {
       background_color: '',
       isOpen: false,
       collaborators: null,
-      features: null
+      features: null,
+      date: '',
     }
   },
   methods: {
@@ -68,6 +69,13 @@ export default {
     if (process.client && this.showByIndex != this.project) {
     // window.addEventListener('click', this.scrollUp)
     }
+
+    let str01, str02
+    let string = this.project.data.project_publishing_date
+    if (string !== null) {
+        str01 =  string.slice(0, 7);
+    }
+    this.date = str01
     this.slices = this.project.data.body,
     this.link = LinkResolver(this.project)
     this.background_color = this.project.data.project_color
