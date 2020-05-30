@@ -2,13 +2,13 @@
  <div class="project-container" v-click-outside="scrollUp">
     <div class="project-content" ref="projectContent" :class="{ overflow: showByIndex === project}">
       <div class="project-header">
-        <div class="flex-container">
+        <div class="flex-container" :class="{ vertical: title > 30}">
           <div class="project-title-container">
             <h1>0{{ index + 1 }}. 
             <span class="project-title" :class="{ show: showByIndex === project }">{{ $prismic.asText(project.data.project_title) }}</span>
            </h1>
          </div> 
-          <div class="project-tags" :class="{ show: showByIndex === project }">
+          <div class="project-tags" :class="{ show: showByIndex === project, left: title > 30 }">
             <p>{{ project.data.project_type }} | <span class="project-publishing-date"> {{ date }}</span></p>
           </div>
          <div class="project-extra-info flex-container vertical captions" :class="{ show: showByIndex === project }"
@@ -54,6 +54,7 @@ export default {
       collaborators: null,
       features: null,
       date: '',
+      title: null
     }
   },
   methods: {
@@ -75,6 +76,8 @@ export default {
     if (string !== null) {
         str01 =  string.slice(0, 7);
     }
+    this.title = this.project.data.project_title[0].text.length
+    console.log(this.title + "title")
     this.date = str01
     this.slices = this.project.data.body,
     this.link = LinkResolver(this.project)
