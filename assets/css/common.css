@@ -9,13 +9,13 @@
 }
 
 @font-face {
-  font-family: FaktPro-Normal;
-  src: url(../fonts/FaktPro-Normal.woff);
+  font-family: FaktPro-Blond;
+  src: url(../fonts/FaktPro-Blond.woff);
 }
 
 @font-face {
-  font-family: FaktPro-Medium;
-  src: url(../fonts/FaktPro-Bold.woff);
+  font-family: FaktPro-Normal;
+  src: url(../fonts/FaktPro-Normal.woff);
 }
 
 /*
@@ -73,16 +73,18 @@ h2 {
 }
 
 p {
+  font-family: FaktPro-Blond, 'Lato', sans-serif;
   font-size: 1.05rem;
   line-height: 1.4rem;
 }
 p.caption, .caption p, #dev-credit p {
+  font-family: FaktPro-Normal, 'Lato', sans-serif;
   font-size: 0.75rem;
   line-height: 1.3;
-
 }
 
 .project-header p {
+  font-family: FaktPro-Normal, 'Lato', sans-serif;
   font-size: 0.80rem;
   line-height: 1.2rem;
 }
@@ -252,7 +254,7 @@ img {
   cursor: pointer;
 }
 
-.project:hover .project-main:hover {
+.project:hover .project-header:hover, .project-main:hover {
   cursor: auto;
 }
 

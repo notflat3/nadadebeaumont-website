@@ -8,6 +8,7 @@
                   class="project"
                   id="about"
                   :class="{ active: showByIndex === aboutIndex }"
+                  :style="{ background: about.about_color }"
                   >
             <about-widget :about="about" :showByIndex="showByIndex"></about-widget>
         </section>
