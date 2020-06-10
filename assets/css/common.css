@@ -254,13 +254,17 @@ img {
   cursor: pointer;
 }
 
-.project:hover .project-header:hover, .project-main:hover {
+.project.active .project-header:hover, .project.active .project-main:hover {
   cursor: auto;
 }
 
 /* About */
 #about {
   max-width: 540px;
+}
+
+#about.project.active {
+  background: white!important;
 }
 
 #about #dev-credit {
